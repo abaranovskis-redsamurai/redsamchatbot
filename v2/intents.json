@@ -1,0 +1,63 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+         "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye"],
+         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {"tag": "noanswer",
+         "patterns": [],
+         "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"]
+        },
+        {"tag": "options",
+         "patterns": ["How you could help me?", "What you can do?", "What help you provide?"],
+         "responses": ["I can guide you through Adverse drug reaction list, Blood pressure tracking and Pharmacies", "Offering support for Adverse drug reaction, Blood pressure and Pharmacies"]
+        },
+        {"tag": "adverse_drug",
+         "patterns": ["How to check Adverse drug reaction?", "List all drugs suitable for patient with adverse reaction", "Which drugs dont have adverse reaction?" ],
+         "responses": ["Navigating to Adverse drug reaction module"],
+         "context": ["adverse_drug_module"],
+         "metadata": ["OPEN_FORM", "ADVERSE_DRUG_REACTION"]
+        },
+        {"tag": "blood_pressure",
+         "patterns": ["Open blood pressure module", "I want to log blood pressure results", "Blood pressure data management" ],
+         "responses": ["Navigating to Blood Pressure module"],
+         "context": ["blood_pressure_module"],
+         "metadata": ["OPEN_FORM", "MEDICATION_DOSAGES"]
+        },
+        {"tag": "blood_pressure_search",
+         "patterns": ["I want to search for blood pressure result history", "Show blood pressure results for patient", "Find blood pressure results by ID" ],
+         "responses": ["Please provide Patient ID", "Patient ID?"],
+         "context": ["search_blood_pressure_by_patient_id"],
+         "nexttag": ["blood_pressure_search_answer"]
+        },
+        {"tag": "blood_pressure_search_answer",
+         "patterns": [],
+         "responses": ["Searching Blood pressure history for Patient"],
+         "filterContext": ["search_blood_pressure_by_patient_id"],
+         "context": ["blood_pressure_module"],
+         "metadata": ["OPEN_FORM_SEARCH", "BLOOD_PRESSURE", "SEARCH_VAL"]
+        },
+        {"tag": "pharmacy_search",
+         "patterns": ["Find me a pharmacy", "Locate pharmacy by name", "Search pharmacy by parameter" ],
+         "responses": ["Please provide pharmacy name", "Which pharmacy exactly?"],
+         "context": ["search_pharmacy_by_name"],
+         "nexttag": ["pharmacy_search_answer"]
+        },
+        {"tag": "pharmacy_search_answer",
+         "patterns": [],
+         "responses": ["Searching Pharmacy"],
+         "filterContext": ["search_pharmacy_by_name"],
+         "context": ["pharmacy_module"],
+         "metadata": ["OPEN_FORM_SEARCH", "PHARMACY", "SEARCH_VAL"]
+        }
+   ]
+}
