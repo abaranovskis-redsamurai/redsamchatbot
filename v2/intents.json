@@ -1,16 +1,16 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+         "patterns": ["Hi there", "How are you", "Is anyone there?", "Hello", "Good day"],
          "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
          "context": [""]
         },
         {"tag": "goodbye",
-         "patterns": ["Bye", "See you later", "Goodbye"],
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
          "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
          "context": [""]
         },
         {"tag": "thanks",
-         "patterns": ["Thanks", "Thank you", "That's helpful"],
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
          "responses": ["Happy to help!", "Any time!", "My pleasure"]
         },
         {"tag": "noanswer",
@@ -18,46 +18,48 @@
          "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"]
         },
         {"tag": "options",
-         "patterns": ["How you could help me?", "What you can do?", "What help you provide?"],
+         "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
          "responses": ["I can guide you through Adverse drug reaction list, Blood pressure tracking and Pharmacies", "Offering support for Adverse drug reaction, Blood pressure and Pharmacies"]
         },
         {"tag": "adverse_drug",
-         "patterns": ["How to check Adverse drug reaction?", "List all drugs suitable for patient with adverse reaction", "Which drugs dont have adverse reaction?" ],
+         "patterns": ["How to check Adverse drug reaction?", "Open adverse drugs module", "Give me a list of drugs causing adverse behavior", "List all drugs suitable for patient with adverse reaction", "Which drugs dont have adverse reaction?" ],
          "responses": ["Navigating to Adverse drug reaction module"],
-         "context": ["adverse_drug_module"],
-         "metadata": ["OPEN_FORM", "ADVERSE_DRUG_REACTION"]
+         "context": ["adverse_drug_module"]
         },
         {"tag": "blood_pressure",
-         "patterns": ["Open blood pressure module", "I want to log blood pressure results", "Blood pressure data management" ],
+         "patterns": ["Open blood pressure module", "Task related to blood pressure", "Blood pressure data entry", "I want to log blood pressure results", "Blood pressure data management" ],
          "responses": ["Navigating to Blood Pressure module"],
-         "context": ["blood_pressure_module"],
-         "metadata": ["OPEN_FORM", "MEDICATION_DOSAGES"]
+         "context": ["blood_pressure_module"]
         },
         {"tag": "blood_pressure_search",
-         "patterns": ["I want to search for blood pressure result history", "Show blood pressure results for patient", "Find blood pressure results by ID" ],
+         "patterns": ["I want to search for blood pressure result history", "Blood pressure for patient", "Load patient blood pressure result", "Show blood pressure results for patient", "Find blood pressure results by ID" ],
          "responses": ["Please provide Patient ID", "Patient ID?"],
-         "context": ["search_blood_pressure_by_patient_id"],
-         "nexttag": ["blood_pressure_search_answer"]
+         "context": ["search_blood_pressure_by_patient_id"]
         },
         {"tag": "blood_pressure_search_answer",
          "patterns": [],
          "responses": ["Searching Blood pressure history for Patient"],
-         "filterContext": ["search_blood_pressure_by_patient_id"],
-         "context": ["blood_pressure_module"],
-         "metadata": ["OPEN_FORM_SEARCH", "BLOOD_PRESSURE", "SEARCH_VAL"]
+         "context": ["search_blood_pressure_by_patient_id"]
         },
         {"tag": "pharmacy_search",
-         "patterns": ["Find me a pharmacy", "Locate pharmacy by name", "Search pharmacy by parameter" ],
-         "responses": ["Please provide pharmacy name", "Which pharmacy exactly?"],
-         "context": ["search_pharmacy_by_name"],
-         "nexttag": ["pharmacy_search_answer"]
+         "patterns": ["Find me a pharmacy", "Find pharmacy", "List of pharmacies nearby", "Locate pharmacy", "Search pharmacy" ],
+         "responses": ["Please provide pharmacy name"],
+         "context": ["search_pharmacy_by_name"]
         },
         {"tag": "pharmacy_search_answer",
          "patterns": [],
          "responses": ["Searching Pharmacy"],
-         "filterContext": ["search_pharmacy_by_name"],
-         "context": ["pharmacy_module"],
-         "metadata": ["OPEN_FORM_SEARCH", "PHARMACY", "SEARCH_VAL"]
+         "context": ["search_pharmacy_by_name"]
+        },
+        {"tag": "hospital_search",
+         "patterns": ["Lookup for hospital", "Searching for hospital to transfer patient", "I want to search hospital data", "Hospital lookup for patient", "Looking up hospital details" ],
+         "responses": ["Please provide hospital name, type or location"],
+         "context": ["search_hospital_by_name"]
+        },
+        {"tag": "hospital_search_answer",
+         "patterns": [],
+         "responses": ["Searching Hospital"],
+         "context": ["search_hospital_by_name"]
         }
    ]
 }
